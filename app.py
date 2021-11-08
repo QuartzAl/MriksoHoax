@@ -75,7 +75,7 @@ def upload():
 
                 for t in text:
                     if t.parent.name not in blacklist:
-                        output += '{} '.format(t)
+                        output += f'{t}'
 
                 print(output)
                 result = na.checkNews(output)
