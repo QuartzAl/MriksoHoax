@@ -1,6 +1,8 @@
 import pickle
+import requests
+from bs4 import BeautifulSoup
+import validators
 from flask import Flask, render_template, request
-import sklearn
 
 app = Flask(__name__)
 
@@ -37,13 +39,48 @@ def homepage():
     return render_template("index.html")
 
 
-@app.route('/text', methods=['POST', 'GET'])
+@app.route('/scan', methods=['POST', 'GET'])
 def upload():
     print("Form Submitted")
+
     if request.method == "POST":
-        text = request.form["text"]
-        print("Text Received : ", text)
-        result = na.checkNews(text)
+
+        if request.form["text"] != "":
+            text = request.form["text"]
+            print("Text Received : ", text)
+            result = na.checkNews(text)
+
+        if request.form['link'] != "":
+
+            url = request.form['link']
+            valid = validators.url(url)
+            if valid == True:
+                res = requests.get(url)
+                html_page = res.content
+                soup = BeautifulSoup(html_page, 'html.parser')
+                text = soup.find_all(text=True)
+                output = ''
+                blacklist = [
+                    '[document]',
+                    'noscript',
+                    'header',
+                    'html',
+                    'meta',
+                    'head',
+                    'input',
+                    'script',
+                    'style'
+                    # there may be more elements you don't want, such as "style", etc.
+                ]
+
+                for t in text:
+                    if t.parent.name not in blacklist:
+                        output += '{} '.format(t)
+
+                print(output)
+                result = na.checkNews(output)
+            else:
+                result = 'Link not found'
 
         return render_template("index.html", result=result)
 
