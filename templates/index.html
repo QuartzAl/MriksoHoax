@@ -52,7 +52,7 @@
 	</nav>
 
 	<div class="container">
-		<img src="../static/logo.png" class="mt-5 mx-auto d-block" alt="App Logo" />
+		<img src="../static/logo.png" class="mt-5 mx-auto d-block w-50" alt="App Logo" />
 		<div class="row">
 			<span class="mt-2 d-flex justify-content-center "><b>Fabricated News Detector</b></span>
 			<hr class="hr mt-3" />
@@ -87,24 +87,93 @@
 			</div>
 			<div class="mt-4" style="font-size: 17px;">
 				<input type="hidden" id="result" value="{{result}}">
+				<input type="hidden" id="text-result" value="{{text}}">
 			</div>
 		</div>
 		<br>
+
 	</div>
 	<p class="text-center text-muted my-3">Copyright &copy; 2021 - Intel&reg; AI4FW Surabaya Students.</p>
 
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 
+
+		document.getElementById('text').setAttribute('required', '')
+
+
 		let result = document.getElementById('result').value
+
+		let text = "";
+
+
 		if (result == 'Real') {
-			swal("Real", "You can trust it!", "success");
+			text = `REAL NEWS! 
+		    
+					(${document.getElementById('text-result').value + ')' + ' '}
+
+
+					Scan by MriksoHoax - Fabricated News Detector
+			`
+			Swal.fire({
+				title: '<strong>Real</strong>',
+				icon: 'success',
+				html:
+					'<b>You can trust it!</b>' +
+					'<hr>' +
+					'Share with <br><br>' +
+					'<a target="_blank" id="share-wa" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Hb7V78KYbyjP6CxnJ0p5dgHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-twt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Sbs-M2-y31gNoj9n-IIeowHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-rdt" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ',
+				showCancelButton: true,
+				showConfirmButton: false,
+				cancelButtonText:
+					'Close',
+			})
 		}
 		if (result == 'Fake') {
-			swal("Fake", "Be careful of this news!", "error");
+			text = `FAKE NEWS! 
+			
+					(${document.getElementById('text-result').value + ')' + ' '}
+					
+					
+					Scan by MriksoHoax - Fabricated News Detector
+			`
+			Swal.fire({
+				title: '<strong>Fake</strong>',
+				icon: 'error',
+				html:
+					'<b>Be careful with this news!</b>' +
+					'<hr>' +
+					'Share with <br><br>' +
+					'<a target="_blank" id="share-wa" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Hb7V78KYbyjP6CxnJ0p5dgHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-twt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Sbs-M2-y31gNoj9n-IIeowHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-rdt" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ',
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonColor: 'red',
+				confirmButtonText:
+					'<a class="text-light" target="_blank" href="https://safebrowsing.google.com/safebrowsing/report_badware/?hl=en"><i class="fa fa-warning"></i> Report</a>',
+				cancelButtonText:
+					'Close',
+			})
 		}
 		if (result == 'Link not found') {
-			swal("Link not found", "Try Again!", "error");
+			Swal.fire({
+				title: '<strong>Link not found</strong>',
+				icon: 'error',
+				html:
+					'<b>Try Again!</b>',
+				showCancelButton: true,
+				showConfirmButton: false,
+				cancelButtonText:
+					'Close',
+			})
+		}
+		if (result == 'Real' || result == 'Fake') {
+			document.getElementById('share-wa').setAttribute('href', `https://api.whatsapp.com/send?text=${text}`)
+			document.getElementById('share-twt').setAttribute('href', `https://twitter.com/share?url=${''}&text=${text}&hashtags=#fakenews`)
+			document.getElementById('share-rdt').setAttribute('href', `https://reddit.com/submit?url=${''}&title=${text}`)
 		}
 		document.getElementById('result').value = ''
 		result = ''
@@ -119,12 +188,18 @@
 
 			if (type == 'text') {
 				document.getElementById('input-text').style.display = 'block'
+				document.getElementById('text').setAttribute('required', '')
+
 				document.getElementById('input-link').style.display = 'none'
+				document.getElementById('link').removeAttribute('required')
 			}
 
 			if (type == 'link') {
 				document.getElementById('input-link').style.display = 'block'
+				document.getElementById('link').setAttribute('required', '')
+
 				document.getElementById('input-text').style.display = 'none'
+				document.getElementById('text').removeAttribute('required')
 			}
 		}
 	</script>

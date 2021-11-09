@@ -42,6 +42,7 @@ def homepage():
 @app.route('/scan', methods=['POST', 'GET'])
 def upload():
     print("Form Submitted")
+    text = ''
 
     if request.method == "POST":
 
@@ -49,6 +50,7 @@ def upload():
             text = request.form["text"]
             print("Text Received : ", text)
             result = na.checkNews(text)
+            text = text
 
         if request.form['link'] != "":
 
@@ -79,10 +81,11 @@ def upload():
 
                 print(output)
                 result = na.checkNews(output)
+                text = url
             else:
                 result = 'Link not found'
 
-        return render_template("index.html", result=result)
+        return render_template("index.html", result=result, text=text)
 
     if request.method == "GET":
         return render_template("index.html")
