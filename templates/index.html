@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="../static/logo.png">
 	<title>Intel Prakarsa Muda</title>
 	<script src="https://kit.fontawesome.com/20a7009ed2.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -52,7 +53,7 @@
 	</nav>
 
 	<div class="container">
-		<img src="../static/logo.png" class="mt-5 mx-auto d-block w-50" alt="App Logo" />
+		<img src="../static/logo.png" class="mt-5 mx-auto d-block w-" alt="App Logo" />
 		<div class="row">
 			<span class="mt-2 d-flex justify-content-center "><b>Fabricated News Detector</b></span>
 			<hr class="hr mt-3" />
@@ -97,8 +98,6 @@
 
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-
-
 		document.getElementById('text').setAttribute('required', '')
 
 
@@ -118,17 +117,16 @@
 			Swal.fire({
 				title: '<strong>Real</strong>',
 				icon: 'success',
-				html:
-					'<b>You can trust it!</b>' +
+				html: '<b>You can trust it!</b>' +
 					'<hr>' +
 					'Share with <br><br>' +
 					'<a target="_blank" id="share-wa" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Hb7V78KYbyjP6CxnJ0p5dgHaHa?pid=ImgDet&rs=1"></a> ' +
 					'<a target="_blank" id="share-twt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Sbs-M2-y31gNoj9n-IIeowHaHa?pid=ImgDet&rs=1"></a> ' +
-					'<a target="_blank" id="share-rdt" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ',
+					'<a target="_blank" id="share-rdt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-fb" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/R.2f7b171aa9fb2f997d68ef4a2456a61f?rik=Evaxz4uYD2Dp9g&riu=http%3a%2f%2fjuniorlozandier.com%2fsite+images%2fFacebook-f_Logo-Blue-Logo.wine.png&ehk=CxyfsPd68E8A44qmaBn%2bedjcr790bidiJtKqKuEH%2b5c%3d&risl=&pid=ImgRaw&r=0"></a> ',
 				showCancelButton: true,
 				showConfirmButton: false,
-				cancelButtonText:
-					'Close',
+				cancelButtonText: 'Close',
 			})
 		}
 		if (result == 'Fake') {
@@ -142,38 +140,37 @@
 			Swal.fire({
 				title: '<strong>Fake</strong>',
 				icon: 'error',
-				html:
-					'<b>Be careful with this news!</b>' +
+				html: '<b>Be careful with this news!</b>' +
 					'<hr>' +
 					'Share with <br><br>' +
 					'<a target="_blank" id="share-wa" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Hb7V78KYbyjP6CxnJ0p5dgHaHa?pid=ImgDet&rs=1"></a> ' +
 					'<a target="_blank" id="share-twt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.Sbs-M2-y31gNoj9n-IIeowHaHa?pid=ImgDet&rs=1"></a> ' +
-					'<a target="_blank" id="share-rdt" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ',
+					'<a target="_blank" id="share-rdt" style="cursor: pointer; margin-right: 10px"><img width="30px" src="https://th.bing.com/th/id/OIP.ehQBJvgH2nrvUjF3eDci5gHaHa?pid=ImgDet&rs=1"></a> ' +
+					'<a target="_blank" id="share-fb" style="cursor: pointer"><img width="30px" src="https://th.bing.com/th/id/R.2f7b171aa9fb2f997d68ef4a2456a61f?rik=Evaxz4uYD2Dp9g&riu=http%3a%2f%2fjuniorlozandier.com%2fsite+images%2fFacebook-f_Logo-Blue-Logo.wine.png&ehk=CxyfsPd68E8A44qmaBn%2bedjcr790bidiJtKqKuEH%2b5c%3d&risl=&pid=ImgRaw&r=0"></a> ',
 				showCancelButton: true,
 				focusConfirm: false,
 				confirmButtonColor: 'red',
-				confirmButtonText:
-					'<a class="text-light" target="_blank" href="https://safebrowsing.google.com/safebrowsing/report_badware/?hl=en"><i class="fa fa-warning"></i> Report</a>',
-				cancelButtonText:
-					'Close',
+				confirmButtonText: '<a class="text-light" target="_blank" href="https://safebrowsing.google.com/safebrowsing/report_badware/?hl=en"><i class="fa fa-warning"></i> Report</a>',
+				cancelButtonText: 'Close',
 			})
 		}
 		if (result == 'Link not found') {
 			Swal.fire({
 				title: '<strong>Link not found</strong>',
 				icon: 'error',
-				html:
-					'<b>Try Again!</b>',
+				html: '<b>Try Again!</b>',
 				showCancelButton: true,
 				showConfirmButton: false,
-				cancelButtonText:
-					'Close',
+				cancelButtonText: 'Close',
 			})
 		}
 		if (result == 'Real' || result == 'Fake') {
 			document.getElementById('share-wa').setAttribute('href', `https://api.whatsapp.com/send?text=${text}`)
-			document.getElementById('share-twt').setAttribute('href', `https://twitter.com/share?url=${''}&text=${text}&hashtags=#fakenews`)
+			document.getElementById('share-twt').setAttribute('href',
+				`https://twitter.com/share?url=${''}&text=${text}&hashtags=#fakenews`)
 			document.getElementById('share-rdt').setAttribute('href', `https://reddit.com/submit?url=${''}&title=${text}`)
+			document.getElementById('share-fb').setAttribute('href',
+				`https:www.facebook.com/sharer.php?u=${''}&title=${text}`)
 		}
 		document.getElementById('result').value = ''
 		result = ''
