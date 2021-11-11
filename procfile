@@ -1,2 +1,2 @@
-worker: python app.py
+api: python app.py
 web: templates/index.html
