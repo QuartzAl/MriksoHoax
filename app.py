@@ -93,4 +93,3 @@ def upload():
 
 if __name__ == '__main__':
     na = newsAnalyzer()
-    app.run()
