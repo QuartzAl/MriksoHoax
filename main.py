@@ -2,11 +2,7 @@ import pickle
 import requests
 from bs4 import BeautifulSoup
 import validators
-from firebase import firebase
 from flask import Flask, render_template, request
-
-firebase = firebase.FirebaseApplication(
-    'https://mriksohoax-default-rtdb.asia-southeast1.firebasedatabase.app/', None)
 
 
 def loadModel():
@@ -42,8 +38,7 @@ na = newsAnalyzer()
 
 @app.route('/', methods=['POST', 'GET'])
 def homepage():
-    overviews = firebase.get('/overviews')
-    return render_template("index.html", overviews=overviews)
+    return render_template("index.html")
 
 
 @app.route('/scan', methods=['POST', 'GET'])
