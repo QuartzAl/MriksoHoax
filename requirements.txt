@@ -3,3 +3,4 @@ scikit-learn~=1.0.1
 requests
 bs4
 validators
+gunicorn
