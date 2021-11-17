@@ -7,3 +7,4 @@ gunicorn
 python-firebase
 firebase
 python_jwt
+gcloud
