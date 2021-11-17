@@ -9,3 +9,4 @@ firebase
 python_jwt
 gcloud
 sseclient
+Crypto
