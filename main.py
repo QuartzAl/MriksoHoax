@@ -139,7 +139,7 @@ def upload():
         return render_template("index.html", result=result, text=text, overviews=overviews)
 
     if request.method == "GET":
-        return render_template("index.html")
+        return render_template("index.html", overviews=overviews)
 
 
 if __name__ == '__main__':
