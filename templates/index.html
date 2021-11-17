@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="../static/logo.png">
 	<title>Intel Prakarsa Muda</title>
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+		integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/20a7009ed2.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -56,6 +59,20 @@
 		<img src="../static/logo.png" class="mt-5 mx-auto d-block w-50" alt="App Logo" />
 		<div class="row">
 			<span class="mt-2 d-flex justify-content-center "><b>Fabricated News Detector</b></span>
+			<div class="row mt-5 mx-auto">
+				<div class="col-4 text-center">
+					<i style="font-size: 2em;" class="fas fa-users"></i> <br>
+					<p>{{overviews.users.total}} Users</p>
+				</div>
+				<div class="col-4 text-center">
+					<i style="font-size: 2em;" class="fas fa-newspaper"></i> <br>
+					<p>{{overviews.news_detections.total}} News Detections</p>
+				</div>
+				<div class="col-4 text-center">
+					<i style="font-size: 2em;" class="fas fa-chart-pie"></i> <br>
+					<p>{{overviews.accuracy}}% Accuracy</p>
+				</div>
+			</div>
 			<hr class="hr mt-3" />
 			<div class="mt-5 col-12">
 				<form action="/scan" method="POST" enctype="multipart/form-data">
@@ -199,6 +216,8 @@
 				document.getElementById('text').removeAttribute('required')
 			}
 		}
+
+
 	</script>
 </body>
 
