@@ -1,13 +1,12 @@
 import pickle
 import requests
 from firebase import firebase
-import socket
+from requests import get
 from bs4 import BeautifulSoup
 import validators
 from flask import Flask, render_template, request
 
-hostname = socket.gethostname()
-ip_address = socket.gethostbyname(hostname)
+ip_address = get('https://api.ipify.org').text
 
 firebase = firebase.FirebaseApplication(
     "https://mriksohoax-3fb0c-default-rtdb.asia-southeast1.firebasedatabase.app/", None)
