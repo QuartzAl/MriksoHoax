@@ -10,3 +10,4 @@ python_jwt
 gcloud
 sseclient
 crypto
+pycrypto
