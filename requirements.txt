@@ -5,4 +5,5 @@ bs4
 validators
 gunicorn
 python-firebase
-process_pool
+process_pool~=2
+firebase
